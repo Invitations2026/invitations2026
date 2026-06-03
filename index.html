@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Լիլիթ & Իշխան</title>
 
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+color:white;
+background:black;
+}
+
+section{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+position:relative;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.55);
+}
+
+.content{
+position:relative;
+z-index:2;
+max-width:900px;
+}
+
+/* BACKGROUNDS */
+.hero{
+background:url("https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147342.jpg?v=1780484921") center/cover;
+}
+
+.page2{
+background:url("https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147336.jpg?v=1780484940") center/cover;
+}
+
+.page3{
+background:url("https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147337.jpg?v=1780484952") center/cover;
+}
+
+.page4{
+background:url("https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147340.jpg?v=1780484961") center/cover;
+}
+
+h1{font-size:50px;margin:10px 0;}
+h2{font-size:30px;margin:10px 0;}
+p{font-size:18px;}
+
+.btn{
+background:#d4af37;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+}
+
+.calendar{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:5px;
+margin-top:10px;
+}
+
+.cell{
+padding:10px;
+text-align:center;
+}
+
+.highlight{
+background:#d4af37;
+border-radius:50%;
+color:white;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+h1{font-size:32px;}
+h2{font-size:22px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="hero">
+<div class="overlay"></div>
+<div class="content">
+<h1>Լիլիթ & Իշխան</h1>
+<h2>Ուրախ ենք տեղեկացնել մեր հարսանիքի մասին</h2>
+<p>Սիրով հրավիրում ենք Ձեզ կիսելու մեր կյանքի ամենագեղեցիկ օրը</p>
+<a href="#cal"><button class="btn">Բացել</button></a>
+</div>
+</section>
+
+<!-- PAGE 2 CALENDAR -->
+<section id="cal" class="page2">
+<div class="overlay"></div>
+<div class="content">
+
+<h2>27 Դեկտեմբեր 2025</h2>
+
+<div class="calendar">
+<div class="grid">
+<div>Երկ</div><div>Երք</div><div>Չրք</div><div>Հնգ</div><div>Ուրբ</div><div>Շբթ</div><div>Կիր</div>
+
+<div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+<div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div>
+<div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+<div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
+<div class="highlight">27</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page3">
+<div class="overlay"></div>
+<div class="content">
+
+<h2>Օրվա Ծրագիր</h2>
+
+<p>10:00 — Փեսայի տուն</p>
+<p>12:00 — Հարսնացուի տուն</p>
+<p>15:00 — Սուրբ Հովհաննես Մկրտիչ եկեղեցի</p>
+<p>18:00 — Safari Hall</p>
+
+<a target="_blank" href="https://maps.google.com">
+<button class="btn">Եկեղեցի</button>
+</a>
+
+<a target="_blank" href="https://maps.google.com">
+<button class="btn">Հանդիսությունների սրահ</button>
+</a>
+
+</div>
+</section>
+
+<!-- PAGE 4 RSVP -->
+<section class="page4">
+<div class="overlay"></div>
+<div class="content">
+
+<h2>Հաստատեք Ձեր ներկայությունը</h2>
+
+<input id="name" placeholder="Անուն Ազգանուն" style="padding:10px;width:80%;margin:10px;">
+
+<br>
+
+<label><input type="radio" name="a" value="yes"> Գալու եմ</label>
+<label><input type="radio" name="a" value="no"> Չեմ կարող գալ</label>
+
+<br>
+
+<button class="btn" onclick="send()">Ուղարկել</button>
+
+<p id="msg"></p>
+
+</div>
+</section>
+
+<!-- FINAL -->
+<section class="hero">
+<div class="overlay"></div>
+<div class="content">
+<h2>Սիրով սպասում ենք Ձեզ</h2>
+<h1>Լիլիթ ❤️ Իշխան</h1>
+</div>
+</section>
+
+<script>
+function send(){
+let name=document.getElementById("name").value;
+let choice=document.querySelector('input[name="a"]:checked');
+let msg=document.getElementById("msg");
+
+if(!name || !choice){
+msg.innerHTML="Լրացրեք բոլոր դաշտերը";
+return;
+}
+
+msg.innerHTML="Շնորհակալություն ❤️";
+}
+</script>
+
+</body>
+</html>
