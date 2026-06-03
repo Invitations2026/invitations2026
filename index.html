@@ -1,264 +1,324 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Լիլիթ & Իշխան</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Լիլիթ & Իշխան</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --gold: #d4af37;
-      --dark: #0f0f0f;
-      --overlay: rgba(0,0,0,0.55);
-    }
+<style>
+:root{
+  --bg:#0f0f0f;
+  --text:#ffffff;
+  --gold1:#f7e7a1;
+  --gold2:#c9a227;
+  --glass: rgba(255,255,255,0.08);
+}
 
-    * {
-      box-sizing: border-box;
-    }
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      font-family: 'Cormorant Garamond', serif;
-      background: var(--dark);
-      color: #fff;
-      overflow-x: hidden;
-    }
+body{
+margin:0;
+font-family:'Cormorant Garamond',serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
 
-    section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 40px;
-      position: relative;
-    }
+/* SECTION */
+section{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+padding:40px;
+position:relative;
+}
 
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: var(--overlay);
-    }
+.overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.55);
+}
 
-    .content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-    }
+.content{
+position:relative;
+z-index:2;
+max-width:900px;
+}
 
-    h1 { font-size: 4rem; margin-bottom: 10px; }
-    h2 { font-size: 2.5rem; margin-bottom: 20px; }
-    p { font-size: 1.3rem; }
+/* TEXT */
+h1{font-size:4rem;margin:10px 0;}
+h2{font-size:2.5rem;margin:10px 0;}
+p{font-size:1.2rem;opacity:0.9}
 
-    .btn {
-      padding: 14px 30px;
-      border: none;
-      border-radius: 40px;
-      background: var(--gold);
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-      margin: 10px;
-      transition: transform 0.25s ease;
-    }
+/* 🎯 PREMIUM BUTTON */
+.btn{
+padding:14px 32px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+font-size:18px;
+color:#1a1a1a;
+font-weight:600;
 
-    .btn:hover {
-      transform: scale(1.05);
-    }
+background: linear-gradient(135deg,var(--gold1),var(--gold2));
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 
-    .hero {
-      background: url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147342.jpg?v=1780484921') center/cover no-repeat;
-    }
+transition:0.25s ease;
+}
 
-    .bg-2 {
-      background: url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147336.jpg?v=1780484940') center/cover no-repeat;
-    }
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 15px 30px rgba(0,0,0,0.4);
+}
 
-    .bg-3 {
-      background: url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147337.jpg?v=1780484952') center/cover no-repeat;
-    }
+/* HERO BACKGROUNDS */
+.hero{
+background:url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147342.jpg?v=1780484921') center/cover no-repeat;
+}
 
-    .bg-4 {
-      background: url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147340.jpg?v=1780484961') center/cover no-repeat;
-    }
+.bg2{background:url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147336.jpg?v=1780484940') center/cover no-repeat;}
+.bg3{background:url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147337.jpg?v=1780484952') center/cover no-repeat;}
+.bg4{background:url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147340.jpg?v=1780484961') center/cover no-repeat;}
 
-    .music-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
-    }
+/* MUSIC BUTTON */
+.music{
+position:fixed;
+top:20px;
+right:20px;
+z-index:999;
+}
 
-    .calendar {
-      background: #fff;
-      color: #222;
-      padding: 25px;
-      border-radius: 20px;
-    }
+/* 📅 CALENDAR (PRO VERSION) */
+.calendar{
+background:rgba(255,255,255,0.92);
+color:#222;
+padding:25px;
+border-radius:18px;
+backdrop-filter: blur(10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      margin-top: 10px;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:10px;
+margin-top:15px;
+}
 
-    .cell {
-      padding: 10px;
-      text-align: center;
-    }
+.cell{
+padding:12px;
+border-radius:10px;
+font-size:1rem;
+transition:0.2s;
+}
 
-    .highlight {
-      background: var(--gold);
-      color: #fff;
-      border-radius: 50%;
-    }
+.cell:hover{
+background:rgba(0,0,0,0.05);
+}
 
-    .timeline {
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-    }
+.day{
+font-weight:600;
+opacity:0.6;
+}
 
-    input {
-      padding: 12px;
-      width: 100%;
-      margin: 10px 0;
-      border-radius: 10px;
-      border: none;
-    }
+.highlight{
+background:linear-gradient(135deg,var(--gold1),var(--gold2));
+color:#fff;
+font-weight:700;
+}
 
-    .radio {
-      margin: 10px 0;
-    }
+/* TIMELINE */
+.timeline{
+background:var(--glass);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(12px);
+}
 
-    @media (max-width: 768px) {
-      h1 { font-size: 2.8rem; }
-      h2 { font-size: 2rem; }
-    }
-  </style>
+/* RSVP */
+input{
+padding:14px;
+width:100%;
+margin:10px 0;
+border-radius:12px;
+border:none;
+outline:none;
+}
+
+.radio{
+margin:10px;
+}
+
+/* TOAST */
+.toast{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#111;
+color:#fff;
+padding:12px 20px;
+border-radius:12px;
+opacity:0;
+transition:0.3s;
+}
+
+.toast.show{
+opacity:1;
+transform:translateX(-50%) translateY(-10px);
+}
+
+@media(max-width:768px){
+h1{font-size:2.8rem}
+h2{font-size:2rem}
+}
+</style>
 </head>
 
 <body>
 
 <!-- MUSIC -->
-<button class="btn music-btn" id="musicToggle">🎵 Երաժշտություն</button>
-<audio id="music" preload="none"></audio>
+<button class="btn music" id="musicBtn">🎵 Երաժշտություն</button>
+<audio id="music"></audio>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="overlay"></div>
-  <div class="content">
-    <h1>Լիլիթ & Իշխան</h1>
-    <h2>Հարսանեկան հրավեր</h2>
-    <p>Սիրով հրավիրում ենք Ձեզ կիսելու մեր կյանքի ամենագեղեցիկ օրը</p>
-    <a href="#details"><button class="btn">Բացել հրավերը</button></a>
-  </div>
+<div class="overlay"></div>
+<div class="content">
+<h1>Լիլիթ & Իշխան</h1>
+<h2>Հարսանեկան հրավեր</h2>
+<p>Սիրով հրավիրում ենք Ձեզ մեր կյանքի կարևոր օրը</p>
+<a href="#date"><button class="btn">Բացել հրավերը</button></a>
+</div>
 </section>
 
-<!-- DETAILS -->
-<section id="details" class="bg-2">
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>27 Դեկտեմբեր 2025</h2>
+<!-- DATE -->
+<section id="date" class="bg2">
+<div class="overlay"></div>
+<div class="content">
 
-    <div class="calendar">
-      <div class="grid">
-        <div class="cell">Երկ</div><div class="cell">Երք</div><div class="cell">Չրք</div>
-        <div class="cell">Հնգ</div><div class="cell">Ուրբ</div><div class="cell">Շբթ</div><div class="cell">Կիր</div>
+<h2>27 Դեկտեմբեր 2025</h2>
 
-        <div class="cell"></div><div class="cell">1</div><div class="cell">2</div>
-        <div class="cell">3</div><div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
+<div class="calendar">
+<div class="grid">
+<div class="cell day">Երկ</div>
+<div class="cell day">Երք</div>
+<div class="cell day">Չրք</div>
+<div class="cell day">Հնգ</div>
+<div class="cell day">Ուրբ</div>
+<div class="cell day">Շբթ</div>
+<div class="cell day">Կիր</div>
 
-        <div class="cell">7</div><div class="cell">8</div><div class="cell">9</div>
-        <div class="cell">10</div><div class="cell">11</div><div class="cell">12</div><div class="cell">13</div>
+<!-- cleaner calendar -->
+<div class="cell"></div><div class="cell">1</div><div class="cell">2</div>
+<div class="cell">3</div><div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
 
-        <div class="cell">14</div><div class="cell">15</div><div class="cell">16</div>
-        <div class="cell">17</div><div class="cell">18</div><div class="cell">19</div><div class="cell">20</div>
+<div class="cell">7</div><div class="cell">8</div><div class="cell">9</div>
+<div class="cell">10</div><div class="cell">11</div><div class="cell">12</div><div class="cell">13</div>
 
-        <div class="cell">21</div><div class="cell">22</div><div class="cell">23</div>
-        <div class="cell">24</div><div class="cell">25</div><div class="cell">26</div>
-        <div class="cell highlight">27</div>
-      </div>
-    </div>
-  </div>
+<div class="cell">14</div><div class="cell">15</div><div class="cell">16</div>
+<div class="cell">17</div><div class="cell">18</div><div class="cell">19</div><div class="cell">20</div>
+
+<div class="cell">21</div><div class="cell">22</div><div class="cell">23</div>
+<div class="cell">24</div><div class="cell">25</div><div class="cell">26</div>
+<div class="cell highlight">27</div>
+</div>
+</div>
+
+</div>
 </section>
 
 <!-- PROGRAM -->
-<section class="bg-3">
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>Օրվա Ծրագիր</h2>
+<section class="bg3">
+<div class="overlay"></div>
+<div class="content">
+<h2>Օրվա Ծրագիր</h2>
 
-    <div class="timeline">
-      <p>10:00 — Փեսայի տուն</p>
-      <p>12:00 — Հարսնացուի տուն</p>
-      <p>15:00 — Եկեղեցի</p>
-      <p>18:00 — Հանդիսությունների սրահ</p>
-    </div>
+<div class="timeline">
+<p>10:00 — Փեսայի տուն</p>
+<p>12:00 — Հարսնացուի տուն</p>
+<p>15:00 — Եկեղեցի</p>
+<p>18:00 — Հանդիսությունների սրահ</p>
+</div>
 
-    <a target="_blank" href="https://www.google.com/maps">
-      <button class="btn">Քարտեզ</button>
-    </a>
-  </div>
+<a href="https://www.google.com/maps" target="_blank">
+<button class="btn">Քարտեզ</button>
+</a>
+
+</div>
 </section>
 
 <!-- RSVP -->
-<section class="bg-4">
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>RSVP</h2>
+<section class="bg4">
+<div class="overlay"></div>
+<div class="content">
 
-    <form id="rsvpForm">
-      <input type="text" id="name" placeholder="Անուն Ազգանուն" required />
+<h2>RSVP</h2>
 
-      <label class="radio">
-        <input type="radio" name="attendance" value="yes" required /> Գալու եմ
-      </label>
+<input id="name" placeholder="Անուն Ազգանուն">
 
-      <label class="radio">
-        <input type="radio" name="attendance" value="no" /> Չեմ կարող գալ
-      </label>
+<label class="radio">
+<input type="radio" name="r" value="yes"> Գալու եմ
+</label>
 
-      <button class="btn" type="submit">Ուղարկել</button>
-    </form>
-  </div>
+<label class="radio">
+<input type="radio" name="r" value="no"> Չեմ կարող գալ
+</label>
+
+<button class="btn" id="sendBtn">Ուղարկել</button>
+
+</div>
 </section>
 
 <!-- END -->
 <section class="hero">
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>Սիրով սպասում ենք Ձեզ</h2>
-    <h1>Լիլիթ ❤️ Իշխան</h1>
-  </div>
+<div class="overlay"></div>
+<div class="content">
+<h2>Սիրով սպասում ենք Ձեզ</h2>
+<h1>Լիլիթ ❤️ Իշխան</h1>
+</div>
 </section>
 
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
 <script>
-  const music = document.getElementById("music");
-  const toggleBtn = document.getElementById("musicToggle");
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+const toast = document.getElementById("toast");
 
-  toggleBtn.addEventListener("click", () => {
-    if (music.paused) music.play();
-    else music.pause();
-  });
+function showToast(msg){
+toast.textContent = msg;
+toast.classList.add("show");
 
-  document.getElementById("rsvpForm").addEventListener("submit", (e) => {
-    e.preventDefault();
+setTimeout(()=>{
+toast.classList.remove("show");
+},3000);
+}
 
-    const name = document.getElementById("name").value.trim();
-    const choice = document.querySelector('input[name="attendance"]:checked');
+/* MUSIC */
+musicBtn.addEventListener("click",()=>{
+music.paused ? music.play() : music.pause();
+});
 
-    if (!name || !choice) return;
+/* RSVP */
+document.getElementById("sendBtn").addEventListener("click",()=>{
+const name = document.getElementById("name").value.trim();
+const choice = document.querySelector('input[name="r"]:checked');
 
-    // Replace alert with better UX later (toast/modal)
-    alert(`Շնորհակալություն, ${name} ❤️ Ձեր պատասխանն ընդունված է`);
-    e.target.reset();
-  });
+if(!name || !choice){
+showToast("Լրացրեք բոլոր դաշտերը");
+return;
+}
+
+showToast(`Շնորհակալություն, ${name} ❤️`);
+document.getElementById("name").value="";
+});
 </script>
 
 </body>
