@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Լիլիթ & Իշխան</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
-font-family:Arial, sans-serif;
+font-family:'Cormorant Garamond',serif;
+background:#0f0f0f;
 color:white;
-background:black;
+overflow-x:hidden;
 }
 
 section{
@@ -20,7 +24,7 @@ align-items:center;
 justify-content:center;
 flex-direction:column;
 text-align:center;
-padding:20px;
+padding:40px;
 position:relative;
 }
 
@@ -36,72 +40,111 @@ z-index:2;
 max-width:900px;
 }
 
-/* BACKGROUNDS */
-.hero{
-background:url("https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147342.jpg?v=1780484921") center/cover;
-}
-
-.page2{
-background:url("https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147336.jpg?v=1780484940") center/cover;
-}
-
-.page3{
-background:url("https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147337.jpg?v=1780484952") center/cover;
-}
-
-.page4{
-background:url("https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147340.jpg?v=1780484961") center/cover;
-}
-
-h1{font-size:50px;margin:10px 0;}
-h2{font-size:30px;margin:10px 0;}
-p{font-size:18px;}
+h1{font-size:4rem;margin-bottom:10px;}
+h2{font-size:2.5rem;margin-bottom:20px;}
+p{font-size:1.3rem;}
 
 .btn{
-background:#d4af37;
+padding:14px 30px;
 border:none;
-padding:12px 25px;
-border-radius:30px;
+border-radius:40px;
+background:#d4af37;
 color:white;
-font-size:16px;
+font-size:18px;
 cursor:pointer;
 margin:10px;
+transition:0.3s;
+}
+.btn:hover{transform:scale(1.05);}
+
+/* HERO */
+.hero{
+background:url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147342.jpg?v=1780484921') center/cover no-repeat;
 }
 
+/* PAGE 2 */
+.page2{
+background:url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147336.jpg?v=1780484940') center/cover no-repeat;
+}
+
+/* PAGE 3 */
+.page3{
+background:url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147337.jpg?v=1780484952') center/cover no-repeat;
+}
+
+/* PAGE 4 */
+.page4{
+background:url('https://cdn.shopify.com/s/files/1/1035/2233/6849/files/5397738512352147340.jpg?v=1780484961') center/cover no-repeat;
+}
+
+/* CALENDAR */
 .calendar{
 background:white;
-color:black;
-padding:20px;
-border-radius:15px;
+color:#222;
+padding:25px;
+border-radius:20px;
 }
-
 .grid{
 display:grid;
 grid-template-columns:repeat(7,1fr);
-gap:5px;
+gap:8px;
 margin-top:10px;
 }
-
 .cell{
 padding:10px;
 text-align:center;
 }
-
 .highlight{
 background:#d4af37;
-border-radius:50%;
 color:white;
+border-radius:50%;
+}
+
+/* TIMELINE */
+.timeline{
+background:rgba(255,255,255,0.1);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+
+/* FORM */
+input{
+padding:12px;
+width:90%;
+margin:10px 0;
+border-radius:10px;
+border:none;
+}
+
+.radio{
+margin:10px;
+}
+
+/* MUSIC BUTTON */
+.music{
+position:fixed;
+top:20px;
+right:20px;
+z-index:999;
 }
 
 /* MOBILE */
-@media(max-width:600px){
-h1{font-size:32px;}
-h2{font-size:22px;}
+@media(max-width:768px){
+h1{font-size:2.8rem;}
+h2{font-size:2rem;}
 }
 </style>
 </head>
 
 <body>
+
+<!-- MUSIC -->
+<button class="btn music" onclick="toggleMusic()">🎵 Երաժշտություն</button>
+
+<audio id="music">
+<source src="" type="audio/mp3">
+</audio>
 
 <!-- PAGE 1 -->
 <section class="hero">
@@ -110,12 +153,12 @@ h2{font-size:22px;}
 <h1>Լիլիթ & Իշխան</h1>
 <h2>Ուրախ ենք տեղեկացնել մեր հարսանիքի մասին</h2>
 <p>Սիրով հրավիրում ենք Ձեզ կիսելու մեր կյանքի ամենագեղեցիկ օրը</p>
-<a href="#cal"><button class="btn">Բացել</button></a>
+<a href="#calendar"><button class="btn">Բացել հրավերը</button></a>
 </div>
 </section>
 
 <!-- PAGE 2 CALENDAR -->
-<section id="cal" class="page2">
+<section id="calendar" class="page2">
 <div class="overlay"></div>
 <div class="content">
 
@@ -123,13 +166,21 @@ h2{font-size:22px;}
 
 <div class="calendar">
 <div class="grid">
-<div>Երկ</div><div>Երք</div><div>Չրք</div><div>Հնգ</div><div>Ուրբ</div><div>Շբթ</div><div>Կիր</div>
+<div class="cell">Երկ</div><div class="cell">Երք</div><div class="cell">Չրք</div>
+<div class="cell">Հնգ</div><div class="cell">Ուրբ</div><div class="cell">Շբթ</div><div class="cell">Կիր</div>
 
-<div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
-<div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div>
-<div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
-<div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
-<div class="highlight">27</div>
+<div class="cell"></div><div class="cell">1</div><div class="cell">2</div>
+<div class="cell">3</div><div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
+
+<div class="cell">7</div><div class="cell">8</div><div class="cell">9</div>
+<div class="cell">10</div><div class="cell">11</div><div class="cell">12</div><div class="cell">13</div>
+
+<div class="cell">14</div><div class="cell">15</div><div class="cell">16</div>
+<div class="cell">17</div><div class="cell">18</div><div class="cell">19</div><div class="cell">20</div>
+
+<div class="cell">21</div><div class="cell">22</div><div class="cell">23</div>
+<div class="cell">24</div><div class="cell">25</div><div class="cell">26</div>
+<div class="cell highlight">27</div>
 </div>
 </div>
 
@@ -143,16 +194,18 @@ h2{font-size:22px;}
 
 <h2>Օրվա Ծրագիր</h2>
 
+<div class="timeline">
 <p>10:00 — Փեսայի տուն</p>
 <p>12:00 — Հարսնացուի տուն</p>
 <p>15:00 — Սուրբ Հովհաննես Մկրտիչ եկեղեցի</p>
 <p>18:00 — Safari Hall</p>
+</div>
 
-<a target="_blank" href="https://maps.google.com">
-<button class="btn">Եկեղեցի</button>
+<a target="_blank" href="https://www.google.com/maps/place/Saint+John+the+Baptist+Church">
+<button class="btn">Եկեղեցու քարտեզ</button>
 </a>
 
-<a target="_blank" href="https://maps.google.com">
+<a target="_blank" href="https://www.google.com/maps/place/Safari+Hall">
 <button class="btn">Հանդիսությունների սրահ</button>
 </a>
 
@@ -166,23 +219,22 @@ h2{font-size:22px;}
 
 <h2>Հաստատեք Ձեր ներկայությունը</h2>
 
-<input id="name" placeholder="Անուն Ազգանուն" style="padding:10px;width:80%;margin:10px;">
+<input id="name" placeholder="Անուն Ազգանուն">
 
-<br>
+<div class="radio">
+<label><input type="radio" name="r" value="Գալու եմ"> Գալու եմ</label>
+</div>
 
-<label><input type="radio" name="a" value="yes"> Գալու եմ</label>
-<label><input type="radio" name="a" value="no"> Չեմ կարող գալ</label>
-
-<br>
+<div class="radio">
+<label><input type="radio" name="r" value="Չեմ կարող գալ"> Չեմ կարող գալ</label>
+</div>
 
 <button class="btn" onclick="send()">Ուղարկել</button>
-
-<p id="msg"></p>
 
 </div>
 </section>
 
-<!-- FINAL -->
+<!-- END -->
 <section class="hero">
 <div class="overlay"></div>
 <div class="content">
@@ -192,18 +244,26 @@ h2{font-size:22px;}
 </section>
 
 <script>
+
+function toggleMusic(){
+const m=document.getElementById("music");
+if(m.paused) m.play();
+else m.pause();
+}
+
 function send(){
-let name=document.getElementById("name").value;
-let choice=document.querySelector('input[name="a"]:checked');
-let msg=document.getElementById("msg");
+const name=document.getElementById("name").value;
+const choice=document.querySelector('input[name="r"]:checked');
 
 if(!name || !choice){
-msg.innerHTML="Լրացրեք բոլոր դաշտերը";
+alert("Լրացրեք բոլոր դաշտերը");
 return;
 }
 
-msg.innerHTML="Շնորհակալություն ❤️";
+alert("Շնորհակալություն, " + name + " ❤️ Ձեր պատասխանն ընդունված է։");
+document.getElementById("name").value="";
 }
+
 </script>
 
 </body>
